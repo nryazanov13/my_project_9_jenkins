@@ -36,15 +36,15 @@ public class RegistrationWithFakerTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
 
-    @BeforeEach
-    void initialSetUp(){
-
-        step("Открываем страницу и удаляем рекламу", () -> {
-            registrationPage
-                    .openPage()
-                    .removeBanner();
-        });
-    }
+//    @BeforeEach
+//    void initialSetUp(){
+//
+//        step("Открываем страницу и удаляем рекламу", () -> {
+//            registrationPage
+//                    .openPage()
+//                    .removeBanner();
+//        });
+//    }
 
     @Tag("demoqa")
     @Test
@@ -57,6 +57,8 @@ public class RegistrationWithFakerTests extends TestBase {
     void fillFormWithAllFieldsTest() {
 
         registrationPage
+                .openPage()
+                .removeBanner()
                 .setFirstNameInput(firstName)
                 .setLastNameInput(lastName)
                 .setEmailInput(email)
