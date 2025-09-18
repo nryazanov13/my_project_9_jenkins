@@ -10,6 +10,7 @@ import pages.RegistrationPage;
 import static io.qameta.allure.Allure.step;
 import static utils.RandomUtils.*;
 
+@DisplayName("Класс для проверки формы регистрации на сайте DemoQA")
 public class RegistrationWithFakerTests extends TestBase {
     private final String
             PRACTICE_FORM_URL = "https://demoqa.com/automation-practice-form",
