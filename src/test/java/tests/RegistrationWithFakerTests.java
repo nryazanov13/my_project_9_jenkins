@@ -4,11 +4,13 @@ import helpers.TestBase;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
 import static io.qameta.allure.Allure.step;
 import static utils.RandomUtils.*;
+
 
 @DisplayName("Класс для проверки формы регистрации на сайте DemoQA")
 public class RegistrationWithFakerTests extends TestBase {
@@ -44,6 +46,7 @@ public class RegistrationWithFakerTests extends TestBase {
         });
     }
 
+    @Tag("demoqa")
     @Test
     @Feature("Регистрация пользователя на сайте DemoQA")
     @Story("Я как пользователь хочу иметь возможность регистрации с заполнением всех полей на форме")
