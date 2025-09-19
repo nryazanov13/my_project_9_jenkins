@@ -12,7 +12,7 @@ import static io.qameta.allure.Allure.step;
 import static utils.RandomUtils.*;
 
 @Tag("DemoQa")
-@DisplayName("ÐšÐ»Ð°ÑÑ Ð´Ð»Ñ Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÐ¸ Ñ„Ð¾Ñ€Ð¼Ñ‹ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸ Ð½Ð° ÑÐ°Ð¹Ñ‚Ðµ DemoQA")
+@DisplayName("Êëàññ äëÿ ïðîâåðêè ôîðìû ðåãèñòðàöèè íà ñàéòå DemoQA")
 public class RegistrationWithFakerTests extends TestBase {
     private final String
             PRACTICE_FORM_URL = "https://demoqa.com/automation-practice-form",
@@ -39,7 +39,7 @@ public class RegistrationWithFakerTests extends TestBase {
     @BeforeEach
     void initialSetUp(){
 
-        step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ Ð¸ ÑƒÐ´Ð°Ð»ÑÐµÐ¼ Ñ€ÐµÐºÐ»Ð°Ð¼Ñƒ", () -> {
+        step("Îòêðûâàåì ñòðàíèöó è óäàëÿåì ðåêëàìó", () -> {
             registrationPage
                     .openPage()
                     .removeBanner();
@@ -47,15 +47,15 @@ public class RegistrationWithFakerTests extends TestBase {
     }
 
     @Test
-    @Feature("Ð ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ñ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ Ð½Ð° ÑÐ°Ð¹Ñ‚Ðµ DemoQA")
-    @Story("Ð¯ ÐºÐ°Ðº Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ Ñ…Ð¾Ñ‡Ñƒ Ð¸Ð¼ÐµÑ‚ÑŒ Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ÑÑ‚ÑŒ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸ Ñ Ð·Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸ÐµÐ¼ Ð²ÑÐµÑ… Ð¿Ð¾Ð»ÐµÐ¹ Ð½Ð° Ñ„Ð¾Ñ€Ð¼Ðµ")
+    @Feature("Ðåãèñòðàöèÿ ïîëüçîâàòåëÿ íà ñàéòå DemoQA")
+    @Story("ß êàê ïîëüçîâàòåëü õî÷ó èìåòü âîçìîæíîñòü ðåãèñòðàöèè ñ çàïîëíåíèåì âñåõ ïîëåé íà ôîðìå")
     @Owner("NikitaRyazanov")
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "PracticeForm", url = PRACTICE_FORM_URL)
-    @DisplayName("Ð¢ÐµÑÑ‚ Ñ„Ð¾Ñ€Ð¼Ñ‹ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸ Ñ Ð·Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸ÐµÐ¼ Ð²ÑÐµÑ… Ð¿Ð¾Ð»ÐµÐ¹")
+    @DisplayName("Òåñò ôîðìû ðåãèñòðàöèè ñ çàïîëíåíèåì âñåõ ïîëåé")
     void fillFormWithAllFieldsTest() {
 
-        step("Ð—Ð°Ð¿Ð¾Ð»Ð½ÑÐµÐ¼ Ð²ÑÐµ Ð¿Ð¾Ð»Ñ Ñ„Ð¾Ñ€Ð¼Ñ‹ ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ñ‹Ð¼Ð¸ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸ÑÐ¼Ð¸ Ð¸ Ð¶Ð¼ÐµÐ¼ Ð½Ð° ÐºÐ½Ð¾Ð¿Ñƒ Submit", () ->
+        step("Çàïîëíÿåì âñå ïîëÿ ôîðìû ñëó÷àéíûìè çíà÷åíèÿìè è æìåì íà êíîïó Submit", () ->
         {
             registrationPage
                     .setFirstNameInput(firstName)
@@ -73,7 +73,7 @@ public class RegistrationWithFakerTests extends TestBase {
                     .clickSubmitButton();
         });
 
-        step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ñƒ Ñ Ð·Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð½Ñ‹Ð¼Ð¸ Ð¿Ð¾Ð»ÑÐ¼Ð¸", () ->
+        step("Ïðîâåðÿåì òàáëèöó ñ çàïîëíåííûìè ïîëÿìè", () ->
         {
             registrationPage
                     .checkIfTableIsVisible()
@@ -92,15 +92,15 @@ public class RegistrationWithFakerTests extends TestBase {
     }
 
     @Test
-    @Feature("Ð ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ñ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ Ð½Ð° ÑÐ°Ð¹Ñ‚Ðµ DemoQA")
-    @Story("Ð¯ ÐºÐ°Ðº Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ Ñ…Ð¾Ñ‡Ñƒ Ð¸Ð¼ÐµÑ‚ÑŒ Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ÑÑ‚ÑŒ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸ Ñ Ð·Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸ÐµÐ¼ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð¾Ð±ÑÐ·Ð°Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ñ… Ð¿Ð¾Ð»ÐµÐ¹ Ð½Ð° Ñ„Ð¾Ñ€Ð¼Ðµ")
+    @Feature("Ðåãèñòðàöèÿ ïîëüçîâàòåëÿ íà ñàéòå DemoQA")
+    @Story("ß êàê ïîëüçîâàòåëü õî÷ó èìåòü âîçìîæíîñòü ðåãèñòðàöèè ñ çàïîëíåíèåì òîëüêî îáÿçàòåëüíûõ ïîëåé íà ôîðìå")
     @Owner("NikitaRyazanov")
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "PracticeForm", url = PRACTICE_FORM_URL)
-    @DisplayName("Ð¢ÐµÑÑ‚ Ñ„Ð¾Ñ€Ð¼Ñ‹ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸ Ñ Ð·Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸ÐµÐ¼ Ð¾Ð±ÑÐ·Ð°Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ñ… Ð¿Ð¾Ð»ÐµÐ¹")
+    @DisplayName("Òåñò ôîðìû ðåãèñòðàöèè ñ çàïîëíåíèåì îáÿçàòåëüíûõ ïîëåé")
     void fillFormWithRequiredFieldsTest() {
 
-        step("Ð—Ð°Ð¿Ð¾Ð»Ð½ÑÐµÐ¼ Ð²ÑÐµ Ð¾Ð±ÑÐ·Ð°Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ðµ Ð¿Ð¾Ð»Ñ Ñ„Ð¾Ñ€Ð¼Ñ‹ ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ñ‹Ð¼Ð¸ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸ÑÐ¼Ð¸ Ð¸ Ð¶Ð¼ÐµÐ¼ Ð½Ð° ÐºÐ½Ð¾Ð¿Ñƒ Submit", () ->
+        step("Çàïîëíÿåì âñå îáÿçàòåëüíûå ïîëÿ ôîðìû ñëó÷àéíûìè çíà÷åíèÿìè è æìåì íà êíîïó Submit", () ->
         {
             registrationPage
                 .setFirstNameInput(firstName)
@@ -111,7 +111,7 @@ public class RegistrationWithFakerTests extends TestBase {
 
         });
 
-        step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ñƒ Ñ Ð·Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð½Ñ‹Ð¼Ð¸ Ð¿Ð¾Ð»ÑÐ¼Ð¸", () ->
+        step("Ïðîâåðÿåì òàáëèöó ñ çàïîëíåííûìè ïîëÿìè", () ->
         {
             registrationPage
                     .checkIfTableIsVisible()
@@ -122,20 +122,20 @@ public class RegistrationWithFakerTests extends TestBase {
     }
 
     @Test
-    @Feature("Ð ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ñ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ Ð½Ð° ÑÐ°Ð¹Ñ‚Ðµ DemoQA")
-    @Story("Ð¯ ÐºÐ°Ðº Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ Ñ…Ð¾Ñ‡Ñƒ Ð¸Ð¼ÐµÑ‚ÑŒ Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ÑÑ‚ÑŒ Ð¿Ð¾Ð»ÑƒÑ‡Ð°Ñ‚ÑŒ Ð¾ÑˆÐ¸Ð±ÐºÑƒ Ð¿Ñ€Ð¸ Ð½Ðµ Ð·Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð½Ñ‹Ñ… Ð¿Ð¾Ð»ÑÑ…")
+    @Feature("Ðåãèñòðàöèÿ ïîëüçîâàòåëÿ íà ñàéòå DemoQA")
+    @Story("ß êàê ïîëüçîâàòåëü õî÷ó èìåòü âîçìîæíîñòü ïîëó÷àòü îøèáêó ïðè íå çàïîëíåííûõ ïîëÿõ")
     @Owner("NikitaRyazanov")
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "PracticeForm", url = PRACTICE_FORM_URL)
-    @DisplayName("Ð¢ÐµÑÑ‚ Ñ„Ð¾Ñ€Ð¼Ñ‹ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸ Ð±ÐµÐ· Ð·Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ñ Ð¾Ð±ÑÐ·Ð°Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ñ… Ð¿Ð¾Ð»ÐµÐ¹")
+    @DisplayName("Òåñò ôîðìû ðåãèñòðàöèè áåç çàïîëíåíèÿ îáÿçàòåëüíûõ ïîëåé")
     void emptyFieldsTest() {
 
-        step("Ð–Ð¼ÐµÐ¼ Ð½Ð° ÐºÐ½Ð¾Ð¿Ñƒ Submit", () -> {
+        step("Æìåì íà êíîïó Submit", () -> {
             registrationPage
                     .clickSubmitButton();
         });
 
-        step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð¾Ñ‚ÑÑƒÑ‚ÑÑ‚Ð²Ð¸Ðµ Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ñ‹ ", () ->
+        step("Ïðîâåðÿåì îòñóòñòâèå òàáëèöû ", () ->
         {
             registrationPage
                     .checkIfTableIsNotVisible();
