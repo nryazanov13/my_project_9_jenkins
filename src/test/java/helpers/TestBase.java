@@ -21,7 +21,8 @@ public class TestBase {
 
     @AfterEach
     void afterEach() {
+        Attach.screenshotAs("Last screenshot");
+
         Selenide.closeWebDriver();
     }
-
 }
