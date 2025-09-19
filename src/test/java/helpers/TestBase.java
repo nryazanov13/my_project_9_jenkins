@@ -15,7 +15,6 @@ public class TestBase {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        //Configuration.browserCapabilities = capabilities;
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 

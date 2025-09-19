@@ -11,7 +11,7 @@ import pages.RegistrationPage;
 import static io.qameta.allure.Allure.step;
 import static utils.RandomUtils.*;
 
-
+@Tag("DemoQa")
 @DisplayName("Класс для проверки формы регистрации на сайте DemoQA")
 public class RegistrationWithFakerTests extends TestBase {
     private final String
@@ -36,17 +36,16 @@ public class RegistrationWithFakerTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
 
-//    @BeforeEach
-//    void initialSetUp(){
-//
-//        step("Открываем страницу и удаляем рекламу", () -> {
-//            registrationPage
-//                    .openPage()
-//                    .removeBanner();
-//        });
-//    }
+    @BeforeEach
+    void initialSetUp(){
 
-    @Tag("demoqa")
+        step("Открываем страницу и удаляем рекламу", () -> {
+            registrationPage
+                    .openPage()
+                    .removeBanner();
+        });
+    }
+
     @Test
     @Feature("Регистрация пользователя на сайте DemoQA")
     @Story("Я как пользователь хочу иметь возможность регистрации с заполнением всех полей на форме")
@@ -56,58 +55,70 @@ public class RegistrationWithFakerTests extends TestBase {
     @DisplayName("Тест формы регистрации с заполнением всех полей")
     void fillFormWithAllFieldsTest() {
 
-        registrationPage
-                .openPage()
-                .removeBanner()
-                .setFirstNameInput(firstName)
-                .setLastNameInput(lastName)
-                .setEmailInput(email)
-                .setGenderInput(gender)
-                .setUserNumberInput(phoneNumber)
-                .setDateOfBirth(day, month , year)
-                .setSubjectInput(subject)
-                .setHobbiesInput(hobbies)
-                .uploadPicture(picture)
-                .setCurrentAddress(address)
-                .setState(state)
-                .setCity(city)
-                .clickSubmitButton()
+        step("Заполняем все поля формы случайными значениями и жмем на кнопу Submit", () ->
+        {
+            registrationPage
+                    .setFirstNameInput(firstName)
+                    .setLastNameInput(lastName)
+                    .setEmailInput(email)
+                    .setGenderInput(gender)
+                    .setUserNumberInput(phoneNumber)
+                    .setDateOfBirth(day, month , year)
+                    .setSubjectInput(subject)
+                    .setHobbiesInput(hobbies)
+                    .uploadPicture(picture)
+                    .setCurrentAddress(address)
+                    .setState(state)
+                    .setCity(city)
+                    .clickSubmitButton();
+        });
 
-                //проверки
-                .checkIfTableIsVisible()
-                .checkResult("Student Name", fullName)
-                .checkResult("Student Email", email)
-                .checkResult("Gender", gender)
-                .checkResult("Mobile", phoneNumber)
-                .checkResult("Date of Birth", dateOfBirth)
-                .checkResult("Subjects", subject)
-                .checkResult("Hobbies", hobbies)
-                .checkResult("Picture", picture)
-                .checkResult("Address", address)
-                .checkResult("State and City", stateAndCity);
+        step("Проверяем таблицу с заполненными полями", () ->
+        {
+            registrationPage
+                    .checkIfTableIsVisible()
+                    .checkResult("Student Name", fullName)
+                    .checkResult("Student Email", email)
+                    .checkResult("Gender", gender)
+                    .checkResult("Mobile", phoneNumber)
+                    .checkResult("Date of Birth", dateOfBirth)
+                    .checkResult("Subjects", subject)
+                    .checkResult("Hobbies", hobbies)
+                    .checkResult("Picture", picture)
+                    .checkResult("Address", address)
+                    .checkResult("State and City", stateAndCity);
 
+        });
     }
 
     @Test
     @Feature("Регистрация пользователя на сайте DemoQA")
-    @Story("Я как пользователь хочу иметь возможность регистрации с заполнением тлоько обязательных полей на форме")
+    @Story("Я как пользователь хочу иметь возможность регистрации с заполнением только обязательных полей на форме")
     @Owner("NikitaRyazanov")
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "PracticeForm", url = PRACTICE_FORM_URL)
     @DisplayName("Тест формы регистрации с заполнением обязательных полей")
     void fillFormWithRequiredFieldsTest() {
-        registrationPage
+
+        step("Заполняем все обязательные поля формы случайными значениями и жмем на кнопу Submit", () ->
+        {
+            registrationPage
                 .setFirstNameInput(firstName)
                 .setLastNameInput(lastName)
                 .setGenderInput(gender)
                 .setUserNumberInput(phoneNumber)
-                .clickSubmitButton()
+                .clickSubmitButton();
 
-                //проверки
-                .checkIfTableIsVisible()
-                .checkResult("Student Name", fullName)
-                .checkResult("Gender", gender)
-                .checkResult("Mobile", phoneNumber);
+        });
+
+        step("Проверяем таблицу с заполненными полями", () ->
+        {
+            registrationPage
+                    .checkIfTableIsVisible()
+                    .checkResult("Student Name", fullName)
+                    .checkResult("Gender", gender)
+                    .checkResult("Mobile", phoneNumber);
+        });
     }
 
     @Test
@@ -119,9 +130,16 @@ public class RegistrationWithFakerTests extends TestBase {
     @DisplayName("Тест формы регистрации без заполнения обязательных полей")
     void emptyFieldsTest() {
 
-        registrationPage
-                .clickSubmitButton()
-                //проверки
-                .checkIfTableIsNotVisible();
+        step("Жмем на кнопу Submit", () -> {
+            registrationPage
+                    .clickSubmitButton();
+        });
+
+        step("Проверяем отсутствие таблицы ", () ->
+        {
+            registrationPage
+                    .checkIfTableIsNotVisible();
+        });
+
     }
 }
