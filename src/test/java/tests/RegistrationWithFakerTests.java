@@ -1,7 +1,9 @@
 package tests;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
 import helpers.TestBase;
 import io.qameta.allure.*;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -11,7 +13,7 @@ import pages.RegistrationPage;
 import static io.qameta.allure.Allure.step;
 import static utils.RandomUtils.*;
 
-@Tag("DemoQa")
+@Tag("smoke")
 @DisplayName("Класс для проверки формы регистрации на сайте DemoQA")
 public class RegistrationWithFakerTests extends TestBase {
     private final String
@@ -38,6 +40,8 @@ public class RegistrationWithFakerTests extends TestBase {
 
     @BeforeEach
     void initialSetUp(){
+
+        SelenideLogger.addListener("allure", new AllureSelenide());
 
         step("Открываем страницу и удаляем рекламу", () -> {
             registrationPage

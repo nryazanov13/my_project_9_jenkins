@@ -30,7 +30,8 @@ dependencies {
             "io.qameta.allure:allure-selenide:$allureVersion",
             "org.junit.jupiter:junit-jupiter:5.10.0",
             'com.github.javafaker:javafaker:1.0.2',
-            'org.slf4j:slf4j-simple:2.0.7'
+            'org.slf4j:slf4j-simple:2.0.7',
+            "org.aeonbits.owner:owner:1.0.12"
     )
     implementation 'org.aspectj:aspectjweaver:1.9.20'
     implementation 'org.aspectj:aspectjrt:1.9.20'
@@ -38,6 +39,7 @@ dependencies {
 
 tasks.withType(Test) {
     useJUnitPlatform()
+    systemProperties(System.getProperties())
 
     testLogging {
         lifecycle {
@@ -49,6 +51,6 @@ tasks.withType(Test) {
 
 task demoqa_tests(type: Test) {
     useJUnitPlatform {
-        includeTags("DemoQa")
+        includeTags("smoke")
     }
 }
