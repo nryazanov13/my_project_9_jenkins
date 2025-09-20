@@ -2,8 +2,7 @@ package helpers;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.logevents.SelenideLogger;
-import io.qameta.allure.selenide.AllureSelenide;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -12,18 +11,20 @@ import java.util.Map;
 
 public class TestBase {
 
+    static CredentialsConfig config = ConfigFactory.create(CredentialsConfig.class);
+
     @BeforeAll
     static void setUpAll() {
 
         Configuration.browserSize = System.getProperty("browserSize");
         Configuration.browser = System.getProperty("browser");
-        Configuration.browserVersion = System.getProperty("browserVersion");
+
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        //String login = config.login();
-        //String password = config.password();
+        String login = config.login();
+        String password = config.password();
         String remoteHost = System.getProperty("remoteHost");
-        //Configuration.remote = "https://"+login+":"+password+"@"+remoteHost+"/wd/hub";
+        Configuration.remote = String.format("https://%s:%s@%s/wd/hub", login, password, remoteHost);
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
@@ -31,8 +32,6 @@ public class TestBase {
                 "enableVideo", true
         ));
         Configuration.browserCapabilities = capabilities;
-
-
     }
 
     @AfterEach
