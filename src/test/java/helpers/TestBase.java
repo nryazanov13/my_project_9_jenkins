@@ -36,7 +36,7 @@ public class TestBase {
 
     @AfterEach
     void afterEach() {
-        Attach.screenshotAs("Last screenshot");
+        Attach.screenshotAs("Last screenshot was made");
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
