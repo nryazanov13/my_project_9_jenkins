@@ -1,6 +1,6 @@
 HELP.md
 
-/notifications/
+notifications/config.json
 
 build/
 !**/src/main/**
