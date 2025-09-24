@@ -31,7 +31,7 @@ dependencies {
             "org.junit.jupiter:junit-jupiter:5.10.0",
             'com.github.javafaker:javafaker:1.0.2',
             'org.slf4j:slf4j-simple:2.0.7',
-            "org.aeonbits.owner:owner:1.0.12"
+            "org.aeonbits.owner:owner:1.0.11"
     )
     implementation 'org.aspectj:aspectjweaver:1.9.20'
     implementation 'org.aspectj:aspectjrt:1.9.20'
@@ -46,11 +46,5 @@ tasks.withType(Test) {
             events "started", "skipped", "failed", "standard_error", "standard_out"
             exceptionFormat "short"
         }
-    }
-}
-
-task demoqa_tests(type: Test) {
-    useJUnitPlatform {
-        includeTags("smoke")
     }
 }
