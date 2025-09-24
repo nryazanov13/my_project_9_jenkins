@@ -1,4 +1,7 @@
 HELP.md
+
+notifications/config.json
+
 build/
 !**/src/main/**
 !**/src/test/**
